@@ -16,6 +16,7 @@ SearchBike.prototype.getStolenCount = function(city, proximity) {
 
 SearchBike.prototype.getBikesByCity = function(city) {
   $.get('https://bikeindex.org:443/api/v3/search?location=' + city).then(function(response) {
+    console.log("What is city value here: ");
     displayBikesByCity(city, response.bikes);
   }).fail(function(error) {
     $('.showBikesByCity').text(error.responseJSON.message);

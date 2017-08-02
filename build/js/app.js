@@ -42,7 +42,7 @@ exports.bikeModule = Bike;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayStolenCount = function(city, proximity, cityProximityData) {
-  $('.showStolenBikeCount').text("There are " + cityProximityData + " lost bikes within " + proximity + " of "+ city + ".");
+  $('.showStolenBikeCount').text("There are " + cityProximityData + " lost bikes within " + proximity + "miles of "+ city + ".");
 };
 
 $(document).ready(function() {
@@ -81,6 +81,7 @@ SearchBike.prototype.getStolenCount = function(city, proximity) {
 
 SearchBike.prototype.getBikesByCity = function(city) {
   $.get('https://bikeindex.org:443/api/v3/search?location=' + city).then(function(response) {
+    console.log("What is city value here: ");
     displayBikesByCity(city, response.bikes);
   }).fail(function(error) {
     $('.showBikesByCity').text(error.responseJSON.message);
@@ -94,6 +95,8 @@ exports.searchBikeModule = SearchBike;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayBikesByCity = function(city, cityData) {
+  console.log("city is: " + city);
+  $('.showBikesInCity').append('<li>foo</li>');
   cityData.forEach(function(bike) {
     $('.showBikesInCity').append('<li>' + bike.title + '</li>');
   });
@@ -138,7 +141,7 @@ exports.displayManufacturerFunction = displayManufacturer;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayStolenCount = function(city, proximity, cityProximityData) {
-  $('.showStolenBikeCount').text("There are " + cityProximityData + " lost bikes within " + proximity + " of "+ city + ".");
+  $('.showStolenBikeCount').text("There are " + cityProximityData + " lost bikes within " + proximity + "miles of "+ city + ".");
 };
 
 $(document).ready(function() {
@@ -161,6 +164,8 @@ exports.displayStolenCountFunction = displayStolenCount;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayBikesByCity = function(city, cityData) {
+  console.log("city is: " + city);
+  $('.showBikesInCity').append('<li>foo</li>');
   cityData.forEach(function(bike) {
     $('.showBikesInCity').append('<li>' + bike.title + '</li>');
   });

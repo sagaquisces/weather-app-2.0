@@ -1,7 +1,7 @@
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayStolenCount = function(city, proximity, cityProximityData) {
-  $('.showStolenBikeCount').text("There are " + cityProximityData + " lost bikes within " + proximity + " of "+ city + ".");
+  $('.showStolenBikeCount').text("There are " + cityProximityData + " lost bikes within " + proximity + "miles of "+ city + ".");
 };
 
 $(document).ready(function() {

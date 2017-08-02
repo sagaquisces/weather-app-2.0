@@ -1,6 +1,8 @@
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayBikesByCity = function(city, cityData) {
+  console.log("city is: " + city);
+  $('.showBikesInCity').append('<li>foo</li>');
   cityData.forEach(function(bike) {
     $('.showBikesInCity').append('<li>' + bike.title + '</li>');
   });
