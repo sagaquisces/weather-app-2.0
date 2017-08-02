@@ -13,3 +13,4 @@ SearchBike.prototype.getStolenCount = function(city, proximity) {
 };
 
 exports.searchBikeModule = SearchBike;
+///////////////////////////////////////////

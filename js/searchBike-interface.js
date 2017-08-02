@@ -19,3 +19,4 @@ $(document).ready(function() {
 });
 
 exports.displayStolenCountFunction = displayStolenCount;
+///////////////////////////////////////////
