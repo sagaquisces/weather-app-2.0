@@ -42,12 +42,13 @@ exports.bikeModule = Bike;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayStolenCount = function(city, proximity, cityProximityData) {
+  console.log("city in displayStolenCount is: " + city);
   $('.showStolenBikeCount').text("There are " + cityProximityData + " lost bikes within " + proximity + "miles of "+ city + ".");
 };
 
 $(document).ready(function() {
   var currentSearchBikeObject = new SearchBike();
-  $('#prox-search').click(function() {
+  $('form#bikes-stolen').submit(function() {
      event.preventDefault();
     console.log("You clicker you");
     var city = $('#city-state').val();
@@ -73,6 +74,7 @@ function SearchBike() {
 
 SearchBike.prototype.getStolenCount = function(city, proximity) {
   $.get('https://bikeindex.org:443/api/v3/search/count?location=' + city + '&distance=' + proximity + '&stolenness=stolen').then(function(response) {
+    console.log("What is city value for getStolenCount here: ");
     displayStolenCount(city, proximity, response.proximity);
   }).fail(function(error) {
     $('.showStolenBikeCount').text(error.responseJSON.message);
@@ -81,7 +83,7 @@ SearchBike.prototype.getStolenCount = function(city, proximity) {
 
 SearchBike.prototype.getBikesByCity = function(city) {
   $.get('https://bikeindex.org:443/api/v3/search?location=' + city).then(function(response) {
-    console.log("What is city value here: ");
+    console.log("What is city value for getBikesByCity here: ");
     displayBikesByCity(city, response.bikes);
   }).fail(function(error) {
     $('.showBikesByCity').text(error.responseJSON.message);
@@ -95,8 +97,8 @@ exports.searchBikeModule = SearchBike;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayBikesByCity = function(city, cityData) {
-  console.log("city is: " + city);
-  $('.showBikesInCity').append('<li>foo</li>');
+  console.log("city in displayBikesByCity is: " + city);
+  $('.showBikesInCity').append('<li>' + city + '</li>');
   cityData.forEach(function(bike) {
     $('.showBikesInCity').append('<li>' + bike.title + '</li>');
   });
@@ -104,10 +106,11 @@ var displayBikesByCity = function(city, cityData) {
 
 $(document).ready(function() {
   var currentSearchBikeObject = new SearchBike();
-  $('#bikes-by-city-search').click(function() {
+  $('form#bikes-by-city').submit(function() {
     event.preventDefault();
-    var city = $('#city-state').val();
-    $('#city-state').val("");
+    var city = $('#city').val();
+
+    $('#city').val("");
     currentSearchBikeObject.getBikesByCity(city);
   });
 
@@ -141,12 +144,13 @@ exports.displayManufacturerFunction = displayManufacturer;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayStolenCount = function(city, proximity, cityProximityData) {
+  console.log("city in displayStolenCount is: " + city);
   $('.showStolenBikeCount').text("There are " + cityProximityData + " lost bikes within " + proximity + "miles of "+ city + ".");
 };
 
 $(document).ready(function() {
   var currentSearchBikeObject = new SearchBike();
-  $('#prox-search').click(function() {
+  $('form#bikes-stolen').submit(function() {
      event.preventDefault();
     console.log("You clicker you");
     var city = $('#city-state').val();
@@ -164,8 +168,8 @@ exports.displayStolenCountFunction = displayStolenCount;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayBikesByCity = function(city, cityData) {
-  console.log("city is: " + city);
-  $('.showBikesInCity').append('<li>foo</li>');
+  console.log("city in displayBikesByCity is: " + city);
+  $('.showBikesInCity').append('<li>' + city + '</li>');
   cityData.forEach(function(bike) {
     $('.showBikesInCity').append('<li>' + bike.title + '</li>');
   });
@@ -173,10 +177,11 @@ var displayBikesByCity = function(city, cityData) {
 
 $(document).ready(function() {
   var currentSearchBikeObject = new SearchBike();
-  $('#bikes-by-city-search').click(function() {
+  $('form#bikes-by-city').submit(function() {
     event.preventDefault();
-    var city = $('#city-state').val();
-    $('#city-state').val("");
+    var city = $('#city').val();
+
+    $('#city').val("");
     currentSearchBikeObject.getBikesByCity(city);
   });
 

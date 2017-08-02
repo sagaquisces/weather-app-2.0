@@ -8,6 +8,7 @@ function SearchBike() {
 
 SearchBike.prototype.getStolenCount = function(city, proximity) {
   $.get('https://bikeindex.org:443/api/v3/search/count?location=' + city + '&distance=' + proximity + '&stolenness=stolen').then(function(response) {
+    console.log("What is city value for getStolenCount here: ");
     displayStolenCount(city, proximity, response.proximity);
   }).fail(function(error) {
     $('.showStolenBikeCount').text(error.responseJSON.message);
@@ -16,7 +17,7 @@ SearchBike.prototype.getStolenCount = function(city, proximity) {
 
 SearchBike.prototype.getBikesByCity = function(city) {
   $.get('https://bikeindex.org:443/api/v3/search?location=' + city).then(function(response) {
-    console.log("What is city value here: ");
+    console.log("What is city value for getBikesByCity here: ");
     displayBikesByCity(city, response.bikes);
   }).fail(function(error) {
     $('.showBikesByCity').text(error.responseJSON.message);

@@ -1,8 +1,8 @@
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayBikesByCity = function(city, cityData) {
-  console.log("city is: " + city);
-  $('.showBikesInCity').append('<li>foo</li>');
+  console.log("city in displayBikesByCity is: " + city);
+  $('.showBikesInCity').append('<li>' + city + '</li>');
   cityData.forEach(function(bike) {
     $('.showBikesInCity').append('<li>' + bike.title + '</li>');
   });
@@ -10,10 +10,11 @@ var displayBikesByCity = function(city, cityData) {
 
 $(document).ready(function() {
   var currentSearchBikeObject = new SearchBike();
-  $('#bikes-by-city-search').click(function() {
+  $('form#bikes-by-city').submit(function() {
     event.preventDefault();
-    var city = $('#city-state').val();
-    $('#city-state').val("");
+    var city = $('#city').val();
+
+    $('#city').val("");
     currentSearchBikeObject.getBikesByCity(city);
   });
 
