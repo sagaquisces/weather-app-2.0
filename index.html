@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <link rel="stylesheet" href="build/css/styles.css">
+    <script src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="build/js/app.js"></script>
+    <title>Find A Bike</title>
+  </head>
+  <body>
+    <a href="weather.html">Click for a bike by id...</a>
+    <h3>Well look at the time! </h3>
+    <h3 id="time"></h3>
+    <div class="container">
+      <h1>Find a bike!</h1>
+      <div class="form-group">
+        <label for="bike-id">Enter an id number:</label>
+        <input id="bike-id" type="number">
+        <button class="button" id="manufacturer-name" type="submit">Submit</button>
+      </div>
+      <div class="showManufacturer"></div>
+      <h2>Find number of bikes in any city that are stolen:</h2>
+      <div class="box">
+        <form>
+          <div class="form-group">
+            <label for="city-state">Enter your City,State like this: (Seattle,WA)</label>
+            <input id="city-state" type="text">
+          </div>
+          <div class="form-group">
+            <label for="proximity">Enter the distance from your city you want to search</label>
+            <input id="proximity" type="number">
+          </div>
+          <button class="button" id="prox-search" type="submit">Search</button>
+        </form>
+        <div class="showStolenBikeCount"></div>
+      </div>
+    </div>
+  </body>
+</html>
