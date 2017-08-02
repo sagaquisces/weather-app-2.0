@@ -8,9 +8,6 @@
     <title>Find A Bike</title>
   </head>
   <body>
-    <a href="weather.html">Click for a bike by id...</a>
-    <h3>Well look at the time! </h3>
-    <h3 id="time"></h3>
     <div class="container">
       <h1>Find a bike!</h1>
       <div class="form-group">
@@ -34,6 +31,18 @@
         </form>
         <div class="showStolenBikeCount"></div>
       </div>
+
+      <div class="box">
+        <form>
+          <div class="form-group">
+            <label for="city-state">Enter your City,State like this: (Seattle,WA)</label>
+            <input id="city-state" type="text">
+          </div>
+          <button class="button" id="bikes-by-city-search" type="submit">Search</button>
+        </form>
+        <ul class="showBikesInCity"></ul>
+      </div>
+
     </div>
   </body>
 </html>

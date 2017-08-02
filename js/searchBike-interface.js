@@ -5,18 +5,18 @@ var displayStolenCount = function(city, proximity, cityProximityData) {
 };
 
 $(document).ready(function() {
-  // var currentSearchBikeObject = new SearchBike();
+  var currentSearchBikeObject = new SearchBike();
   $('#prox-search').click(function() {
      event.preventDefault();
     console.log("You clicker you");
-    // var city = $('#city-state').val();
-    // var proximity = parseInt($('#proximity').val());
-    // $('#city-state').val("");
-    // $('#proximity').val("");
-    // currentSearchBikeObject.getStolenCount(city, proximity);
+    var city = $('#city-state').val();
+    var proximity = parseInt($('#proximity').val());
+    $('#city-state').val("");
+    $('#proximity').val("");
+    currentSearchBikeObject.getStolenCount(city, proximity);
   });
 
 });
 
 exports.displayStolenCountFunction = displayStolenCount;
-///////////////////////////////////////////
+/////////////searchBike-Interface//////////////////////
