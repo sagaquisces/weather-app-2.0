@@ -47,7 +47,7 @@ var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 var displayBikesByCity = function(city, cityData) {
   cityData.forEach(function(bike) {
     $('.showBikesInCity').append('<li>' + bike.title + '</li>');
-  }
+  });
 };
 
 $(document).ready(function() {
