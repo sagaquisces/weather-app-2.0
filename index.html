@@ -38,11 +38,12 @@
         <form id="bikes-by-city">
           <div class="form-group">
             <label for="city-state">Enter your City,State like this: (Seattle,WA)</label>
-            <input id="city" type="text">
+            <input id="city" type="text" required>
           </div>
           <button class="button" id="bikes-by-city-search" type="submit">Search</button>
         </form>
-        <ul class="showBikesInCity"></ul>
+        <h2 id="showBikesHeader"></h2>
+        <ul class="list-group showBikesInCity"></ul>
       </div>
 
     </div>

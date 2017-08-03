@@ -73,8 +73,7 @@ function SearchBike() {
 }
 
 SearchBike.prototype.getStolenCount = function(city, proximity) {
-  $.get('https://bikeindex.org:443/api/v3/search/count?location=' + city + '&distance=' + proximity + '&stolenness=stolen').then(function(response) {
-    console.log("What is city value for getStolenCount here: ");
+  $.get('https://bikeindex.org/api/v3/search/count?location=' + city + '&distance=' + proximity + '&stolenness=stolen').then(function(response) {
     displayStolenCount(city, proximity, response.proximity);
   }).fail(function(error) {
     $('.showStolenBikeCount').text(error.responseJSON.message);
@@ -82,8 +81,7 @@ SearchBike.prototype.getStolenCount = function(city, proximity) {
 };
 
 SearchBike.prototype.getBikesByCity = function(city) {
-  $.get('https://bikeindex.org:443/api/v3/search?location=' + city).then(function(response) {
-    console.log("What is city value for getBikesByCity here: ");
+  $.get('https://bikeindex.org/api/v3/search?location=' + city + '&stolenness=proximity').then(function(response) {
     displayBikesByCity(city, response.bikes);
   }).fail(function(error) {
     $('.showBikesByCity').text(error.responseJSON.message);
@@ -97,10 +95,11 @@ exports.searchBikeModule = SearchBike;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayBikesByCity = function(city, cityData) {
-  console.log("city in displayBikesByCity is: " + city);
-  $('.showBikesInCity').append('<li>' + city + '</li>');
+  $('#showBikesHeader').empty();
+  $('.showBikesInCity').empty();
+  $('#showBikesHeader').append(city);
   cityData.forEach(function(bike) {
-    $('.showBikesInCity').append('<li>' + bike.title + '</li>');
+    $('.showBikesInCity').append('<li class="list-group-item">' + bike.title + '</li>');
   });
 };
 
@@ -168,10 +167,11 @@ exports.displayStolenCountFunction = displayStolenCount;
 var SearchBike = require('./../js/searchBike.js').searchBikeModule;
 
 var displayBikesByCity = function(city, cityData) {
-  console.log("city in displayBikesByCity is: " + city);
-  $('.showBikesInCity').append('<li>' + city + '</li>');
+  $('#showBikesHeader').empty();
+  $('.showBikesInCity').empty();
+  $('#showBikesHeader').append(city);
   cityData.forEach(function(bike) {
-    $('.showBikesInCity').append('<li>' + bike.title + '</li>');
+    $('.showBikesInCity').append('<li class="list-group-item">' + bike.title + '</li>');
   });
 };
 
